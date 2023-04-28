@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+.red {
+  background-color: red;
+  color: white;
+}
+
+.-react-table {
+  width: 100%;
+  overflow-x: auto;
+}
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.debug {
+  border: 1px solid red;
+
+}
+.debug > * {
+  border: 1px solid green;
+
+}
+.debug * > *{
+  border: 1px solid blue;
+
+}
