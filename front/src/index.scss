@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("leaflet/dist/leaflet.css");
+$scrollbar-width: 0px;
+$scrollbar-height: 0px;
+$menu-transition-duration: 0.5s ease-in-out;
+
+@font-face {
+  font-family: "Poppins";
+  src: url(./assets/font/Poppins-Medium.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins";
+}
+.debug {
+  border: 1px solid red !important;
+  & * {
+    border: 1px solid green !important;
+    & * {
+      border: 1px solid blue !important;
+    }
+  }
+}
+////////////////
+.apexcharts-tooltip {
+  color: black !important;
+}
+/////////////////
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  @apply bg-gray-100 text-gray-800;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.card {
+  @apply bg-white text-black rounded-3xl;
+}
+
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+[disabled] {
+  @apply brightness-125;
+  filter: grayscale(75%) !important;
+  opacity: 0.5 !important;
+  pointer-events: none !important;
+}
+
+.bg-blur {
+  backdrop-filter: blur(0.5rem);
+}
+
+.show-menu {
+  animation: show-menu 0.5s ease-out reverse;
+}
+
+.show-link {
+  animation: show-link 0.75s ease-in reverse;
+}
+
+.show-title {
+  animation: show-title 1.5s linear reverse;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.blur-background {
+  backdrop-filter: blur(0.5rem);
+}
