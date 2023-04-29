@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Flag {
+  RED
+  YELLOW
+  GREEN
+}
+
+model Car {
+  id           Int     @id @default(autoincrement())
+  licencePlate String  @unique @map("licence_plate")
+  flag         Flag    @default(GREEN)
+  owner        String?
+  status       Boolean @default(true)
+
+  captures   Capture[]
+  violations Violation[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([licencePlate])
+  @@map("cars")
+}
+
+model Capture {
+  id       Int     @id @default(autoincrement())
+  location String?
+  car      Car?    @relation(fields: [carsId], references: [id])
+  carsId   Int?    @map("cars_id")
+
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@map("captures")
+}
+
+model Violation {
+  id          Int     @id @default(autoincrement())
+  description String?
+  carId       Int?    @map("car_id")
+  car         Car?    @relation(fields: [carId], references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@map("violations")
+}
