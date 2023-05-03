@@ -9,7 +9,7 @@ export class Capture {
   @ApiProperty({ required: false })
   location: string;
   @ApiProperty({ required: false })
-  carsId: number;
+  carId: number;
   @ApiProperty({ required: false })
   createdAt: Date;
 }
@@ -24,7 +24,7 @@ export class CreateCaptureDto {
   @ApiProperty({ required: false })
   @IsInt()
   @IsOptional()
-  carsId: number;
+  carId: number;
 }
 
 export class UpdateCaptureDto {
@@ -37,6 +37,6 @@ export class UpdateCaptureDto {
   @ApiProperty({ required: false })
   @IsInt()
   @IsOptional()
-  carsId: number;
+  carId: number;
 }
 

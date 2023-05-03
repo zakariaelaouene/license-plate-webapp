@@ -1,20 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsInt,
-  IsString,
-  MinLength,
-  MaxLength,
-  IsDateString,
-  IsOptional,
-} from 'class-validator';
+import { IsInt, IsString, MinLength, MaxLength, IsDateString, IsOptional } from 'class-validator'
 import { IsPassword, IsPhoneNumber } from 'src/utils';
 
 export class Car {
   @ApiProperty({ required: false })
   id: number;
   @ApiProperty({ required: false })
-  licencePlate: string;
+  licensePlate: string;
   @ApiProperty({ required: false })
   flag: 'RED' | 'GREEN' | 'YELLOW';
   @ApiProperty({ required: false })
@@ -28,7 +21,7 @@ export class CreateCarDto {
   @IsString()
   @MinLength(2)
   @MaxLength(255)
-  licencePlate: string;
+  licensePlate: string;
   @ApiProperty({ required: true })
   flag: 'RED' | 'GREEN' | 'YELLOW';
   @ApiProperty({ required: false })
@@ -45,7 +38,7 @@ export class UpdateCarDto {
   @MinLength(2)
   @MaxLength(255)
   @IsOptional()
-  licencePlate: string;
+  licensePlate: string;
   @ApiProperty({ required: false })
   flag: 'RED' | 'GREEN' | 'YELLOW';
   @ApiProperty({ required: false })
@@ -55,3 +48,4 @@ export class UpdateCarDto {
   @IsOptional()
   owner: string;
 }
+

@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client';
 
 const data = [
   {
-    licence_plate: '65463-A-45',
+    license_plate: '65463-A-45',
     date: '2023-01-01',
     location: 'Location A',
     flag: 'G',
@@ -11,7 +11,7 @@ const data = [
     status: 'OK',
   },
   {
-    licence_plate: '27546-E-12',
+    license_plate: '27546-E-12',
     date: '2023-01-03',
     location: 'Location C',
     flag: 'R',
@@ -20,7 +20,7 @@ const data = [
     status: 'Check violation',
   },
   {
-    licence_plate: '15631-H-29',
+    license_plate: '15631-H-29',
     date: '2023-01-04',
     location: 'Location D',
     flag: 'G',
@@ -29,7 +29,7 @@ const data = [
     status: 'OK',
   },
   {
-    licence_plate: '46321-A-78',
+    license_plate: '46321-A-78',
     date: '2023-01-05',
     location: 'Location E',
     flag: 'Y',
@@ -38,7 +38,7 @@ const data = [
     status: 'OK',
   },
   {
-    licence_plate: '58932-B-9',
+    license_plate: '58932-B-9',
     date: '2023-01-06',
     location: 'Location A',
     flag: 'Y',
@@ -47,7 +47,7 @@ const data = [
     status: 'OK',
   },
   {
-    licence_plate: '97842-D-30',
+    license_plate: '97842-D-30',
     date: '2023-01-07',
     location: 'Location B',
     flag: 'R',
@@ -56,7 +56,7 @@ const data = [
     status: 'Check violation',
   },
   {
-    licence_plate: '63251-E-44',
+    license_plate: '63251-E-44',
     date: '2023-01-08',
     location: 'Location C',
     flag: 'G',
@@ -65,7 +65,7 @@ const data = [
     status: 'OK',
   },
   {
-    licence_plate: '42136-H-86',
+    license_plate: '42136-H-86',
     date: '2023-01-09',
     location: 'Location D',
     flag: 'Y',
@@ -74,7 +74,7 @@ const data = [
     status: 'OK',
   },
   {
-    licence_plate: '364986-WW',
+    license_plate: '364986-WW',
     date: '2023-01-10',
     location: 'Location E',
     flag: 'G',
@@ -83,7 +83,7 @@ const data = [
     status: 'OK',
   },
   {
-    licence_plate: '98456-A-61',
+    license_plate: '98456-A-61',
     date: '2023-01-11',
     location: 'Location A',
     flag: 'Y',
@@ -92,7 +92,7 @@ const data = [
     status: 'OK',
   },
   {
-    licence_plate: '23541-B-16',
+    license_plate: '23541-B-16',
     date: '2023-01-12',
     location: 'Location B',
     flag: 'R',
@@ -101,7 +101,7 @@ const data = [
     status: 'Check violation',
   },
   {
-    licence_plate: '75628-D-33',
+    license_plate: '75628-D-33',
     date: '2023-01-13',
     location: 'Location C',
     flag: 'G',
@@ -110,7 +110,7 @@ const data = [
     status: 'OK',
   },
   {
-    licence_plate: '82431-E-55',
+    license_plate: '82431-E-55',
     date: '2023-01-14',
     location: 'Location D',
     flag: 'Y',
@@ -119,7 +119,7 @@ const data = [
     status: 'OK',
   },
   {
-    licence_plate: '16234-H-91',
+    license_plate: '16234-H-91',
     date: '2023-01-15',
     location: 'Location E',
     flag: 'R',
@@ -128,7 +128,7 @@ const data = [
     status: 'Check violation',
   },
   {
-    licence_plate: '41357-A-68',
+    license_plate: '41357-A-68',
     date: '2023-01-16',
     location: 'Location A',
     flag: 'G',
@@ -137,7 +137,7 @@ const data = [
     status: 'OK',
   },
   {
-    licence_plate: '84276-D-4',
+    license_plate: '84276-D-4',
     date: '2023-01-17',
     location: 'Location B',
     flag: 'Y',
@@ -146,7 +146,7 @@ const data = [
     status: 'OK',
   },
   {
-    licence_plate: '29361-E-26',
+    license_plate: '29361-E-26',
     date: '2023-01-18',
     location: 'Location C',
     flag: 'R',
@@ -155,7 +155,7 @@ const data = [
     status: 'Check violation',
   },
   {
-    licence_plate: '17632-H-39',
+    license_plate: '17632-H-39',
     date: '2023-01-19',
     location: 'Location D',
     flag: 'G',
@@ -164,7 +164,7 @@ const data = [
     status: 'OK',
   },
   {
-    licence_plate: '57842-A-83',
+    license_plate: '57842-A-83',
     date: '2023-01-20',
     location: 'Location E',
     flag: 'Y',
@@ -173,7 +173,7 @@ const data = [
     status: 'OK',
   },
   {
-    licence_plate: '49652-B-18',
+    license_plate: '49652-B-18',
     date: '2023-01-21',
     location: 'Location A',
     flag: 'R',
@@ -182,7 +182,7 @@ const data = [
     status: 'Check violation',
   },
   {
-    licence_plate: '83759-D-31',
+    license_plate: '83759-D-31',
     date: '2023-01-22',
     location: 'Location B',
     flag: 'G',
@@ -191,7 +191,7 @@ const data = [
     status: 'OK',
   },
   {
-    licence_plate: '26851-E-47',
+    license_plate: '26851-E-47',
     date: '2023-01-23',
     location: 'Location C',
     flag: 'Y',
@@ -200,7 +200,7 @@ const data = [
     status: 'OK',
   },
   {
-    licence_plate: '48162-H-92',
+    license_plate: '48162-H-92',
     date: '2023-01-24',
     location: 'Location D',
     flag: 'R',
@@ -209,7 +209,7 @@ const data = [
     status: 'Check violation',
   },
   {
-    licence_plate: '7851-D-1',
+    license_plate: '7851-D-1',
     date: '2023-01-02',
     location: 'Location B',
     flag: 'Y',
@@ -229,9 +229,9 @@ async function main() {
           location: el.location,
           car: {
             connectOrCreate: {
-              where: { licencePlate: el.licence_plate },
+              where: { licensePlate: el.license_plate },
               create: {
-                licencePlate: el.licence_plate,
+                licensePlate: el.license_plate,
                 flag:
                   el.flag === 'G'
                     ? 'GREEN'

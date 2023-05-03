@@ -8,6 +8,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  // shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 enum Flag {
@@ -18,7 +19,7 @@ enum Flag {
 
 model Car {
   id           Int     @id @default(autoincrement())
-  licencePlate String  @unique @map("licence_plate")
+  licensePlate String  @unique @map("license_plate")
   flag         Flag    @default(GREEN)
   owner        String?
   status       Boolean @default(true)
@@ -28,15 +29,15 @@ model Car {
 
   createdAt DateTime @default(now()) @map("created_at")
 
-  @@index([licencePlate])
+  @@index([licensePlate])
   @@map("cars")
 }
 
 model Capture {
   id       Int     @id @default(autoincrement())
   location String?
-  car      Car?    @relation(fields: [carsId], references: [id])
-  carsId   Int?    @map("cars_id")
+  car      Car?    @relation(fields: [carId], references: [id])
+  carId   Int?    @map("car_id")
 
   createdAt DateTime @default(now())
 

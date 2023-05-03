@@ -20,7 +20,7 @@ type Flag = "RED" | "YELLOW" | "GREEN";
 
 export type Car = {
   id: number;
-  licencePlate: string;
+  licensePlate: string;
   flag: Flag;
   owner: string | null;
   status: boolean;
@@ -69,9 +69,10 @@ function HomePage() {
     useState<string>("");
   const [owner, setOwner] = useState<string>("");
   const [location, setLocation] = useState<string>("");
-  const [pagination, setPagination] = useState({ page: 1, perPage: 5 });
+  const [pagination, setPagination] = useState({ page: 1, perPage: 6 });
   const [open, setOpen] = useState(false);
   const [openViolation, setOpenViolation] = useState(false);
+  const [flag, setFlag] = useState<Flag | undefined>();
   const [violationDescription, setViolationDescription] = useState<string>("");
   const [carId, setCarId] = useState<number>(0);
 
@@ -81,27 +82,53 @@ function HomePage() {
     setOpenViolation(!openViolation);
   };
 
+  const car:any={
+    licensePlate: {
+      contains: licensePlate,
+      mode: "insensitive",
+    },
+    owner: owner?{
+      contains: owner,
+      mode: "insensitive",
+    }:undefined,
+  }
+  if (flag==='RED'){
+    car.status=false
+  }
+  else if (flag==='GREEN'){
+    car.violations={
+        none:{}
+    }
+  }
+  else if (flag==='YELLOW'){
+    car.status=true,
+    car.violations={
+        some:{ }
+    }
+  }
   const params = useMemo(
     () => ({
       take: pagination.perPage,
       skip: (pagination.page - 1) * pagination.perPage,
-      include: "car.violations",
+      include: JSON.stringify({
+        car: {
+          include:{
+            violations: {
+              take: 1,
+              orderBy: {
+                createdAt: 'desc',
+              },
+            },
+          }
+        },
+      }),
 
       where: JSON.stringify({
         location: {
           contains: location,
           mode: "insensitive",
         },
-        car: {
-          licencePlate: {
-            contains: licensePlate,
-            mode: "insensitive",
-          },
-          owner: {
-            contains: owner,
-            mode: "insensitive",
-          },
-        },
+        car
       }),
       orderBy: JSON.stringify({ createdAt: "desc" }),
     }),
@@ -142,7 +169,7 @@ function HomePage() {
       const res = await axios.get("/car", {
         params: {
           where: JSON.stringify({
-            licencePlate: licensePlateViolation.trim(),
+            licensePlate: licensePlateViolation.trim(),
           }),
         },
       });
@@ -185,7 +212,7 @@ function HomePage() {
   const columns: Column[] = [
     {
       header: "License Plate",
-      valueGetter: (row: Capture) => row.car.licencePlate,
+      valueGetter: (row: Capture) => row.car.licensePlate,
       filter: {
         type: "text",
         onChange: (newVal) => {
@@ -245,13 +272,25 @@ function HomePage() {
           size={24}
         />
       ),
+      filter: {
+        type: "select",
+        options: [
+          { label: "GREEN", value: "GREEN" },
+          { label: "YELLOW", value: "YELLOW" },
+          { label: "RED", value: "RED" },
+        ],
+        onChange: (newVal) => {
+          setFlag(newVal);
+          setPagination({ ...pagination, page: 1 });
+        },
+      },
       label: "flag",
     },
     {
       header: "Description",
       valueGetter: (row: Capture) =>
-        row.car.violations[0]?.description || "N/A",
-      label: "flag",
+        row.car.violations[0]?.description || "N/A", 
+      label: "Description",
     },
     {
       header: "Status",
@@ -269,6 +308,7 @@ function HomePage() {
           )}
         </div>
       ),
+
       label: "status",
     },
   ];

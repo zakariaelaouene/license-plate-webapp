@@ -18,7 +18,7 @@ interface PaginationProps {
 }
 
 function Pagination({ total, onChange, className }: PaginationProps) {
-  const [{ page, perPage }, setValue] = useState({ page: 1, perPage: 10 });
+  const [{ page, perPage }, setValue] = useState({ page: 1, perPage: 6 });
 
   const max = Math.ceil(total / perPage);
   const pages = Array.from({ length: max }, (_, i) => i + 1);
@@ -84,7 +84,7 @@ function Pagination({ total, onChange, className }: PaginationProps) {
           value={perPage}
           className="select-page"
         >
-          <option label="5 / page">5</option>
+          <option label="6 / page">6</option>
           <option label="10 / page">10</option>
           <option label="20 / page">20</option>
           <option label="50 / page">50</option>

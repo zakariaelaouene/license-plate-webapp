@@ -2,11 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { FindAllOptions, HandleRequestErrors } from 'src/utils';
 import { CreateCarDto, UpdateCarDto } from './entities';
-import { Car } from '@prisma/client';
 
 @Injectable()
 export class CarService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   @FindAllOptions({})
   @HandleRequestErrors()
@@ -19,7 +18,7 @@ export class CarService {
   }
 
   @HandleRequestErrors()
-  async findOne(id: number, query?: any): Promise<Car | null> {
+  async findOne(id: number, query?: any) {
     return await this.prisma.car.findUnique({ where: { id }, ...query });
   }
 
